@@ -1,24 +1,16 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import { Tabs } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+  return(
+<Tabs screenOptions={{tabBarActiveTintColor:'pink'}}>
+  <Tabs.Screen name="index"  options={{title:"shopping",tabBarIcon:({color,size})=>{
+    return <Feather name="list" size={size} color={color} />
+  }}}/>
+  <Tabs.Screen name="counter"  options={{
+    title:"my counter"}}/>
+  <Tabs.Screen name="idea"  options={{title:"IDEA"}}/>
+</Tabs>
+  ) 
+    ;
 }
