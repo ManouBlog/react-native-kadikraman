@@ -1,6 +1,6 @@
 /* ceci est un composant pour envoyer des notifications planifies 
 via la nofitication local*/
-import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Alert,ActivityIndicator } from "react-native";
 
 import { registerForPushNotificationsAsync } from "../utils/registerForPushNotificationsAsync";
 import * as Notifications from "expo-notifications";
@@ -27,6 +27,7 @@ type CountdownStatus = {
 export default function CounterScreen() {
   const [countdownState, setCountdownState] =
     useState<PersistedCountdownState>();
+    const [isLoading,setIsLoading] = useState(true);
   const [status, setStatus] = useState<CountdownStatus>({
     isOverdue: false,
     distance: {},
@@ -47,15 +48,17 @@ export default function CounterScreen() {
       const timestamp = lastCompletedAt
         ? lastCompletedAt + frequency
         : Date.now();
+        
       const isOverdue = isBefore(timestamp, Date.now());
-
+     
       const distance = intervalToDuration(
         isOverdue
           ? { end: Date.now(), start: timestamp }
           : { start: Date.now(), end: timestamp },
       );
-
+ 
       setStatus({ isOverdue, distance });
+      setIsLoading(false);
     }, 1000);
 
     return () => {
@@ -101,6 +104,13 @@ export default function CounterScreen() {
     await saveToStorage(countdownStorageKey, newCountdownState);
   };
 
+  if(isLoading){
+return (
+        <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+            <ActivityIndicator size='small' color='black' />
+        </View>
+    )
+  }
   return (
     <View
       style={[
