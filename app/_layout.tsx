@@ -10,6 +10,7 @@ export default function RootLayout() {
   <Tabs.Screen name="counter"  options={{
     title:"my counter"}}/>
   <Tabs.Screen name="idea"  options={{title:"IDEA"}}/>
+  <Tabs.Screen name="alarm"  options={{title:"Alarm",headerShown: false}}/>
 </Tabs>
   ) 
     ;

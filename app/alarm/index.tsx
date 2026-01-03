@@ -2,12 +2,12 @@
 via la nofitication local*/
 import { Text, View, StyleSheet, TouchableOpacity, Alert,ActivityIndicator } from "react-native";
 
-import { registerForPushNotificationsAsync } from "../utils/registerForPushNotificationsAsync";
+import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
 import * as Notifications from "expo-notifications";
 import { useEffect, useState } from "react";
 import { intervalToDuration, isBefore } from "date-fns";
-import { TimeSegment } from "../components/TimeSegment";
-import { getFromStorage, saveToStorage } from "../utils/storage";
+import { TimeSegment } from "../../components/TimeSegment";
+import { getFromStorage, saveToStorage } from "../../utils/storage";
 
 // 10 seconds in ms
 const frequency = 10 * 1000;
