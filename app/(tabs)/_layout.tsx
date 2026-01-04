@@ -1,9 +1,10 @@
-import { Redirect, Tabs } from "expo-router";
+import { Redirect, Tabs,Link } from "expo-router";
 import { Entypo } from "@expo/vector-icons";
+import {Pressable} from 'react-native';
 import {theme} from "@/myTheme"; 
 import { useUserStore } from "@/store/userStore";
+import { AntDesign } from "@expo/vector-icons";
 
-// import { Text } from "react-native";
 
 export default function Layout(){
     const hasFinishedOnBoarding = useUserStore(state=>state.hasFinished);
@@ -17,6 +18,15 @@ export default function Layout(){
              {
                 // tabBarShowLabel:false,
                 title:"Accueil",
+                headerRight:()=>{
+                   return(
+                    <Link href='/modalcreate' asChild>
+                    <Pressable style={{marginRight:20}} hitSlop={20}>
+<AntDesign name="plus-circle" size={24} color='black' />
+                    </Pressable>
+                    </Link>
+                   )
+                },
                 tabBarIcon:({color,size})=> <Entypo name="home" size={size} color={color} />
              }
             }

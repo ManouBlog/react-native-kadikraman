@@ -13,6 +13,12 @@ export default function Layout(){
                 animation:"fade"
             }}
             />
+            <Stack.Screen name="modalcreate"
+            options={{
+                title:"creation",
+                presentation:"modal"
+            }}
+            />
         </Stack>
     )
 }
