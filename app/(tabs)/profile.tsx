@@ -1,11 +1,12 @@
 import { useUserStore } from "@/store/userStore";
-import {  View, StyleSheet,Button } from "react-native";
+import {  View, StyleSheet } from "react-native";
+import { PlantlyButton } from "@/components/PlantlyButton";
 
 export default function ProfileScreen() {
   const handleDeconnexion =useUserStore((state)=>state.toggleHasFinished)
   return (
     <View style={styles.container}>   
-   <Button title="Deconnexion" onPress={handleDeconnexion} />
+   <PlantlyButton title="Deconnexion" onPress={handleDeconnexion} />
     </View>
   );
 }
