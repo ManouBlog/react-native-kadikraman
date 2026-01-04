@@ -1,8 +1,12 @@
-import { View, StyleSheet } from "react-native";
+import { StyleSheet,View,Text } from "react-native";
 import { theme } from "@/myTheme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
 import { PlantlyButton } from "@/components/PlantlyButton";
+import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
+import ShowImage from "@/components/showImage";
+
 
 export default function OnboardingScreen() {
   const router = useRouter();
@@ -12,18 +16,25 @@ export default function OnboardingScreen() {
     router.replace("/");
   }
   return (
-    <View style={styles.container}>
+    <LinearGradient 
+    colors={[theme.colorLeafyGreen,theme.colorLimeGreen]}
+    style={styles.container}>
+      <StatusBar style="light" />
+      <View style={{alignItems:"center"}}>
+        <Text style={{fontSize:50,color:theme.colorWhite}}>Planty App</Text>
+        <Text style={{color:theme.colorWhite}}>Superbe application</Text>
+      </View>
+      <ShowImage />
       <PlantlyButton title="let me in" onPress={toggleOnboarding} />
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    backgroundColor: theme.colorWhite,
   },
   text: {
     fontSize: 24,
