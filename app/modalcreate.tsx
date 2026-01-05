@@ -10,10 +10,13 @@ import { PlantlyButton } from "@/components/PlantlyButton";
 import { useState } from "react";
 import  ShowImage  from "@/components/ShowImage";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {usePlantStore} from "@/store/PlantStore"
 
 export default function NewScreen() {
   const [name, setName] = useState<string>();
   const [days, setDays] = useState<string>();
+
+  const handleAddPlant = usePlantStore((state)=>state.addPlant)
 
   const handleSubmit = () => {
     if (!name) {
@@ -33,7 +36,7 @@ export default function NewScreen() {
         "Watering frequency must be a be a number",
       );
     }
-
+    handleAddPlant(name,Number(days))
     console.log("Adding plant", name, days);
   };
 
