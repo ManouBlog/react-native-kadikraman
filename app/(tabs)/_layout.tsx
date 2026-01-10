@@ -1,9 +1,9 @@
-import { Redirect, Tabs,Link } from "expo-router";
+import { Redirect, Tabs} from "expo-router";
 import { Entypo } from "@expo/vector-icons";
-import {Pressable} from 'react-native';
+// import {Pressable} from 'react-native';
 import {theme} from "@/myTheme"; 
 import { useUserStore } from "@/store/userStore";
-import { AntDesign } from "@expo/vector-icons";
+// import { AntDesign } from "@expo/vector-icons";
 
 
 export default function Layout(){
@@ -13,20 +13,21 @@ export default function Layout(){
     }
     return(
         <Tabs screenOptions={{tabBarActiveTintColor:theme.colorGreen}}>
-            <Tabs.Screen name="index"
+            <Tabs.Screen name="(home)"
             options={
              {
                 // tabBarShowLabel:false,
-                title:"Accueil",
-                headerRight:()=>{
-                   return(
-                    <Link href='/modalcreate' asChild>
-                    <Pressable style={{marginRight:20}} hitSlop={20}>
-<AntDesign name="plus-circle" size={24} color='black' />
-                    </Pressable>
-                    </Link>
-                   )
-                },
+                // title:"Accueil",
+                headerShown:false,
+                // headerRight:()=>{
+                //    return(
+                //     <Link href='/modalcreate' asChild>
+                //     <Pressable style={{marginRight:20}} hitSlop={20}>
+                //     <AntDesign name="plus-circle" size={24} color='black' />
+                //     </Pressable>
+                //     </Link>
+                //    )
+                // },
                 tabBarIcon:({color,size})=> <Entypo name="home" size={size} color={color} />
              }
             }
