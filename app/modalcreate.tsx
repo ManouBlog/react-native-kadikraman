@@ -4,17 +4,24 @@ import {
   TextInput,
   Alert,
   View,
+  Platform,
+  TouchableOpacity
 } from "react-native";
 import { theme } from "@/myTheme";
 import { PlantlyButton } from "@/components/PlantlyButton";
 import { useState } from "react";
-import  ShowImage  from "@/components/ShowImage";
+import  {ShowImage}  from "@/components/ShowImage";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {usePlantStore} from "@/store/PlantStore"
+import { useRouter } from "expo-router";
+import * as ImagePicker from 'expo-image-picker';
+import { launchImageLibraryAsync } from "expo-image-picker";
 
 export default function NewScreen() {
   const [name, setName] = useState<string>();
   const [days, setDays] = useState<string>();
+   const [imageUri, setImageUri] = useState<string>();
+  const router = useRouter();
 
   const handleAddPlant = usePlantStore((state)=>state.addPlant)
 
@@ -36,9 +43,28 @@ export default function NewScreen() {
         "Watering frequency must be a be a number",
       );
     }
-    handleAddPlant(name,Number(days))
+    handleAddPlant(name,Number(days),imageUri)
+    router.replace('/')
     console.log("Adding plant", name, days);
   };
+
+  const handleChooseImage = async()=>{
+    if(Platform.OS === 'web'){
+     return;
+    }  
+         const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ["images"],
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    console.log("RESULT IMAGE",JSON.stringify(result,null," "))
+
+    if (!result.canceled) {
+      setImageUri(result.assets[0].uri);
+    }
+    }
 
   return (
     <KeyboardAwareScrollView
@@ -47,9 +73,13 @@ export default function NewScreen() {
       keyboardShouldPersistTaps="handled"
        enableOnAndroid
     >
-      <View style={styles.centered}>
-        <ShowImage />
-      </View>
+            <TouchableOpacity
+        style={styles.centered}
+        onPress={handleChooseImage}
+        activeOpacity={0.8}
+      >
+        <ShowImage imageUri={imageUri} />
+      </TouchableOpacity>
       
       <Text style={styles.label}>Name</Text>
       <TextInput
