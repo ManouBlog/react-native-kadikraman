@@ -97,7 +97,7 @@ export default function NewScreen() {
         placeholder="E.g. 6"
         keyboardType="number-pad"
       />
-      <PlantlyButton title="Add plant" onPress={handleSubmit} />
+      <PlantlyButton title="Ajouter une plante" onPress={handleSubmit} />
     </KeyboardAwareScrollView>
   );
 }

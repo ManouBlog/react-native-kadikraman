@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "planty",
+    "name": "Ivoire Osouko Services",
     "slug": "planty",
     "version": "1.0.0",
-    "scheme":"planty",
+    "scheme": "planty",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Splash_icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/Splash_icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,14 +22,22 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.adjobi.planty"
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler":"metro"
+      "bundler": "metro"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "3ba1fde6-36bc-4a2a-865b-aa627470ef04"
+      }
+    },
+    "owner": "adjobi"
   }
 }

@@ -17,7 +17,7 @@ export default function Layout(){
             options={
              {
                 // tabBarShowLabel:false,
-                // title:"Accueil",
+                title:"Accueil",
                 headerShown:false,
                 // headerRight:()=>{
                 //    return(
