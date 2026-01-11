@@ -1,8 +1,21 @@
 import { Stack } from "expo-router";
-import * as SplashScreen from 'expo-splash-screen';
+ import { useEffect } from "react";
+ import * as QuickActions from "expo-quick-actions";
+ import { Platform } from "react-native";
+ import { useQuickActionRouting } from "expo-quick-actions/router";
 
-SplashScreen.preventAutoHideAsync();
 export default function Layout(){
+    useQuickActionRouting();
+     useEffect(() => {
+     QuickActions.setItems([
+       {
+         title: "Add a plant",
+         icon: Platform.OS === "ios" ? "symbol:leaf" : "leaf",
+         id: "0",
+       params: { href: "/modalcreate" },
+       },
+     ]);
+   }, []);
     return (
         <Stack>
             <Stack.Screen name="(tabs)" 
