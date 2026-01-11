@@ -1,4 +1,4 @@
-import { StyleSheet,View,Text } from "react-native";
+import { StyleSheet,View,Text, Platform } from "react-native";
 import { theme } from "@/myTheme";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "expo-router";
@@ -21,8 +21,15 @@ export default function OnboardingScreen() {
     style={styles.container}>
       <StatusBar style="light" />
       <View style={{alignItems:"center"}}>
-        <Text style={{fontSize:50,color:theme.colorWhite}}>Planty App</Text>
-        <Text style={{color:theme.colorWhite}}>Superbe application</Text>
+        <Text style={{fontSize:50,color:theme.colorWhite,
+          fontFamily:Platform.select({
+            ios:"Caveat-regular",
+            android:"Caveat_400Regular"
+          })}}>Planty App</Text>
+        <Text style={{color:theme.colorWhite,fontFamily:Platform.select({
+            ios:"Caveat-regular",
+            android:"Caveat_400Regular"
+          })}}>Superbe application</Text>
       </View>
       <ShowImage />
       <PlantlyButton title="let me in" onPress={toggleOnboarding} />

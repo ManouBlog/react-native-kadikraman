@@ -4,9 +4,14 @@ import { Entypo } from "@expo/vector-icons";
 import {theme} from "@/myTheme"; 
 import { useUserStore } from "@/store/userStore";
 // import { AntDesign } from "@expo/vector-icons";
+import * as SplashScreen from 'expo-splash-screen';
+
+
+
 
 
 export default function Layout(){
+    SplashScreen.hideAsync();
     const hasFinishedOnBoarding = useUserStore(state=>state.hasFinished);
     if(!hasFinishedOnBoarding){
         return <Redirect href="/onboarding" />

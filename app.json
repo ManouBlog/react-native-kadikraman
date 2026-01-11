@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "Ivoire Osouko Services",
+    "name": "IOS",
     "slug": "planty",
     "version": "1.0.0",
     "scheme": "planty",
     "orientation": "portrait",
-    "icon": "./assets/Splash_icon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/Splash_icon.png",
-      "resizeMode": "contain",
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "ios": {
@@ -30,7 +30,23 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "dark": {
+            "image": "./assets/splash-icon.png"
+          },
+          "resizeMode": "cover"
+        }
+      ],
+            [
+        "expo-font",
+        {
+          "fonts": ["node_modules/@expo-google-fonts/caveat/400Regular/Caveat_400Regular.ttf"]
+        }
+       ]      
     ],
     "extra": {
       "router": {},
