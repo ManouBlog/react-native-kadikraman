@@ -1,6 +1,10 @@
 import { Stack,Link } from "expo-router";
 import {Pressable} from 'react-native';
 import { AntDesign } from "@expo/vector-icons";
+
+export const unstable_settings = {
+  initialRouteName: "index",
+};
 export default function LayoutHome(){
     return (
         <Stack>
